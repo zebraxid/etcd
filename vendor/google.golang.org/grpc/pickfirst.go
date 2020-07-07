@@ -106,7 +106,7 @@ type picker struct {
 	sc  balancer.SubConn
 }
 
-func (p *picker) Pick(ctx context.Context, opts balancer.PickOptions) (balancer.SubConn, func(balancer.DoneInfo), error) {
+func (p *picker) Pick(ctx context.Context, opts balancer.PickInfo) (balancer.SubConn, func(balancer.DoneInfo), error) {
 	if p.err != nil {
 		return nil, nil, p.err
 	}

@@ -15,7 +15,6 @@
 package picker
 
 import (
-	"context"
 
 	"google.golang.org/grpc/balancer"
 )
@@ -35,5 +34,5 @@ func (ep *errPicker) String() string {
 }
 
 func (ep *errPicker) Pick(balancer.PickInfo) (balancer.PickResult, error) {
-	return nil, ep.err
+	return new(balancer.PickResult), ep.err
 }

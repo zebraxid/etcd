@@ -275,7 +275,7 @@ func (bw *balancerWrapper) Close() {
 
 // The picker is the balancerWrapper itself.
 // It either blocks or returns error, consistent with v1 balancer Get().
-func (bw *balancerWrapper) Pick(ctx context.Context, opts balancer.PickOptions) (sc balancer.SubConn, done func(balancer.DoneInfo), err error) {
+func (bw *balancerWrapper) Pick(ctx context.Context, opts balancer.PickInfo) (sc balancer.SubConn, done func(balancer.DoneInfo), err error) {
 	failfast := true // Default failfast is true.
 	if ss, ok := rpcInfoFromContext(ctx); ok {
 		failfast = ss.failfast

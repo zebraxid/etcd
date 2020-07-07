@@ -822,7 +822,7 @@ func (cc *ClientConn) healthCheckConfig() *healthCheckConfig {
 }
 
 func (cc *ClientConn) getTransport(ctx context.Context, failfast bool, method string) (transport.ClientTransport, func(balancer.DoneInfo), error) {
-	t, done, err := cc.blockingpicker.pick(ctx, failfast, balancer.PickOptions{
+	t, done, err := cc.blockingpicker.pick(ctx, failfast, balancer.PickInfo{
 		FullMethodName: method,
 	})
 	if err != nil {
